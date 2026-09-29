@@ -1,166 +1,361 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
+  /* =====================================================
      LOADING SCREEN
-  ========================== */
+  ===================================================== */
 
-  const loader = document.getElementById("loader");
-  const progress = document.getElementById("loadingProgress");
+  const loader =
+    document.getElementById("loader");
+
+  const progress =
+    document.getElementById("loadingProgress");
+
 
   if (loader && progress) {
 
     let current = 0;
 
-    const loadingInterval = setInterval(() => {
+    const loading =
+      setInterval(() => {
 
-      current += 4;
+        current += 2;
 
-      if (current >= 100) {
-        current = 100;
-        progress.style.width = "100%";
+        if (current >= 100) {
 
-        clearInterval(loadingInterval);
+          current = 100;
 
-        setTimeout(() => {
-          loader.classList.add("finished");
-          document.body.classList.remove("loading");
-        }, 700);
+          progress.style.width =
+            "100%";
 
-      } else {
-        progress.style.width = current + "%";
-      }
+          clearInterval(loading);
 
-    }, 80);
 
-  } else {
-    document.body.classList.remove("loading");
+          setTimeout(() => {
+
+            loader.classList.add(
+              "finished"
+            );
+
+          }, 500);
+
+        } else {
+
+          progress.style.width =
+            current + "%";
+
+        }
+
+      }, 35);
+
   }
 
 
-  /* =========================
-     MOBILE MENU
-  ========================== */
+  /* =====================================================
+     GERÇEK KAR YAĞIŞI
+  ===================================================== */
 
-  const menuBtn = document.querySelector(".menu-btn");
-  const nav = document.querySelector(".navbar nav");
+  const snow =
+    document.querySelector(".snow");
 
-  if (menuBtn && nav) {
-    menuBtn.addEventListener("click", () => {
-      nav.classList.toggle("open");
-    });
+
+  if (snow) {
+
+    const amount =
+      window.innerWidth <= 650
+        ? 55
+        : 90;
+
+
+    for (let i = 0; i < amount; i++) {
+
+      const flake =
+        document.createElement("span");
+
+
+      flake.className =
+        "snowflake";
+
+      flake.textContent =
+        "❄";
+
+
+      const size =
+        Math.random() * 10 + 5;
+
+      const opacity =
+        Math.random() * .55 + .25;
+
+      const duration =
+        Math.random() * 9 + 9;
+
+      const delay =
+        Math.random() * -18;
+
+
+      const drift1 =
+        Math.random() * 100 - 50;
+
+      const drift2 =
+        Math.random() * 160 - 80;
+
+      const drift3 =
+        Math.random() * 100 - 50;
+
+      const drift4 =
+        Math.random() * 180 - 90;
+
+
+      const blur =
+        Math.random() > .75
+          ? (Math.random() * 1.2)
+          : 0;
+
+
+      flake.style.left =
+        Math.random() * 100 + "%";
+
+
+      flake.style.setProperty(
+        "--snow-size",
+        size + "px"
+      );
+
+
+      flake.style.setProperty(
+        "--snow-opacity",
+        opacity
+      );
+
+
+      flake.style.setProperty(
+        "--snow-duration",
+        duration + "s"
+      );
+
+
+      flake.style.setProperty(
+        "--snow-delay",
+        delay + "s"
+      );
+
+
+      flake.style.setProperty(
+        "--snow-drift-1",
+        drift1 + "px"
+      );
+
+
+      flake.style.setProperty(
+        "--snow-drift-2",
+        drift2 + "px"
+      );
+
+
+      flake.style.setProperty(
+        "--snow-drift-3",
+        drift3 + "px"
+      );
+
+
+      flake.style.setProperty(
+        "--snow-drift-4",
+        drift4 + "px"
+      );
+
+
+      flake.style.setProperty(
+        "--snow-blur",
+        blur + "px"
+      );
+
+
+      snow.appendChild(flake);
+
+    }
+
   }
 
-  document.querySelectorAll(".navbar nav a").forEach(link => {
-    link.addEventListener("click", () => {
-      nav?.classList.remove("open");
-    });
-  });
+
+  /* =====================================================
+     MOBİL MENÜ
+  ===================================================== */
+
+  const menu =
+    document.querySelector(".menu-btn");
+
+  const nav =
+    document.querySelector(".navbar nav");
 
 
-  /* =========================
-     SCROLL REVEAL
-  ========================== */
+  if (menu && nav) {
 
-  const revealElements = document.querySelectorAll(".reveal");
+    menu.addEventListener(
+      "click",
+      () => {
 
-  if ("IntersectionObserver" in window) {
+        nav.classList.toggle(
+          "open"
+        );
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1
       }
     );
 
-    revealElements.forEach(element => {
-      observer.observe(element);
+  }
+
+
+  document
+    .querySelectorAll(
+      ".navbar nav a"
+    )
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          if (nav) {
+            nav.classList.remove(
+              "open"
+            );
+          }
+
+        }
+      );
+
     });
+
+
+  /* =====================================================
+     REVEAL
+  ===================================================== */
+
+  const elements =
+    document.querySelectorAll(
+      ".reveal"
+    );
+
+
+  if (
+    "IntersectionObserver"
+    in window
+  ) {
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: .12
+        }
+      );
+
+
+    elements.forEach(
+      element => {
+
+        observer.observe(
+          element
+        );
+
+      }
+    );
 
   } else {
 
-    revealElements.forEach(element => {
-      element.classList.add("visible");
-    });
+    elements.forEach(
+      element => {
+
+        element.classList.add(
+          "visible"
+        );
+
+      }
+    );
 
   }
 
 
-  /* =========================
-     HERO PARALLAX
-  ========================== */
-
-  const hero = document.querySelector(".hero");
-  const heroArt = document.getElementById("heroArt");
-
-  if (
-    hero &&
-    heroArt &&
-    window.innerWidth > 650
-  ) {
-
-    hero.addEventListener("mousemove", event => {
-
-      const rect = hero.getBoundingClientRect();
-
-      const x =
-        (event.clientX - rect.left) / rect.width - 0.5;
-
-      const y =
-        (event.clientY - rect.top) / rect.height - 0.5;
-
-      heroArt.style.transform =
-        `translate(${x * 15}px, ${y * 15}px)`;
-
-    });
-
-    hero.addEventListener("mouseleave", () => {
-      heroArt.style.transform = "translate(0, 0)";
-    });
-
-  }
-
-
-  /* =========================
+  /* =====================================================
      SMOOTH SCROLL
-  ========================== */
+  ===================================================== */
 
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
+  document
+    .querySelectorAll(
+      'a[href^="#"]'
+    )
+    .forEach(link => {
 
-    link.addEventListener("click", event => {
+      link.addEventListener(
+        "click",
+        event => {
 
-      const targetId = link.getAttribute("href");
+          const id =
+            link.getAttribute(
+              "href"
+            );
 
-      if (!targetId || targetId === "#") {
-        return;
-      }
 
-      const target = document.querySelector(targetId);
+          if (
+            !id ||
+            id === "#"
+          ) {
+            return;
+          }
 
-      if (!target) {
-        return;
-      }
 
-      event.preventDefault();
+          const target =
+            document.querySelector(
+              id
+            );
 
-      const position =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        75;
 
-      window.scrollTo({
-        top: position,
-        behavior: "smooth"
-      });
+          if (!target) {
+            return;
+          }
+
+
+          event.preventDefault();
+
+
+          const top =
+            target.getBoundingClientRect()
+              .top +
+            window.scrollY -
+            86;
+
+
+          window.scrollTo({
+
+            top: top,
+
+            behavior: "smooth"
+
+          });
+
+        }
+      );
 
     });
-
-  });
 
 });
