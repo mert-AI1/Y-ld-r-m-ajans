@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  document.body.classList.add("loading");
-
-
   /* =========================
      LOADING SCREEN
   ========================== */
@@ -10,27 +7,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
   const progress = document.getElementById("loadingProgress");
 
-  let currentProgress = 0;
+  if (loader && progress) {
 
-  const loadingInterval = setInterval(() => {
+    let current = 0;
 
-    currentProgress += Math.floor(Math.random() * 5) + 2;
+    const loadingInterval = setInterval(() => {
 
-    if (currentProgress >= 100) {
-      currentProgress = 100;
-      clearInterval(loadingInterval);
+      current += 4;
 
-      progress.style.width = "100%";
+      if (current >= 100) {
+        current = 100;
+        progress.style.width = "100%";
 
-      setTimeout(() => {
-        loader.classList.add("finished");
-        document.body.classList.remove("loading");
-      }, 500);
-    } else {
-      progress.style.width = currentProgress + "%";
-    }
+        clearInterval(loadingInterval);
 
-  }, 65);
+        setTimeout(() => {
+          loader.classList.add("finished");
+          document.body.classList.remove("loading");
+        }, 700);
+
+      } else {
+        progress.style.width = current + "%";
+      }
+
+    }, 80);
+
+  } else {
+    document.body.classList.remove("loading");
+  }
 
 
   /* =========================
@@ -40,17 +44,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector(".menu-btn");
   const nav = document.querySelector(".navbar nav");
 
-  menuBtn?.addEventListener("click", () => {
-    nav?.classList.toggle("open");
-  });
-
+  if (menuBtn && nav) {
+    menuBtn.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+  }
 
   document.querySelectorAll(".navbar nav a").forEach(link => {
-
     link.addEventListener("click", () => {
       nav?.classList.remove("open");
     });
-
   });
 
 
@@ -60,28 +63,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const revealElements = document.querySelectorAll(".reveal");
 
-  const observer = new IntersectionObserver(
-    entries => {
+  if ("IntersectionObserver" in window) {
 
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1
+      }
+    );
 
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
+    revealElements.forEach(element => {
+      observer.observe(element);
+    });
 
-      });
+  } else {
 
-    },
-    {
-      threshold: 0.12
-    }
-  );
+    revealElements.forEach(element => {
+      element.classList.add("visible");
+    });
 
-
-  revealElements.forEach(element => {
-    observer.observe(element);
-  });
+  }
 
 
   /* =========================
@@ -94,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (
     hero &&
     heroArt &&
-    window.matchMedia("(min-width: 651px)").matches
+    window.innerWidth > 650
   ) {
 
     hero.addEventListener("mousemove", event => {
@@ -107,24 +115,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const y =
         (event.clientY - rect.top) / rect.height - 0.5;
 
-      heroArt.style.transform = `
-        translate(${x * 18}px, ${y * 18}px)
-      `;
+      heroArt.style.transform =
+        `translate(${x * 15}px, ${y * 15}px)`;
 
     });
 
-
     hero.addEventListener("mouseleave", () => {
-
       heroArt.style.transform = "translate(0, 0)";
-
     });
 
   }
 
 
   /* =========================
-     SMOOTH ANCHOR OFFSET
+     SMOOTH SCROLL
   ========================== */
 
   document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -145,12 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       event.preventDefault();
 
-      const offset = 75;
-
       const position =
         target.getBoundingClientRect().top +
         window.scrollY -
-        offset;
+        75;
 
       window.scrollTo({
         top: position,
