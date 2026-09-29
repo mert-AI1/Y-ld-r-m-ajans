@@ -1,141 +1,163 @@
-/* ================= MENÜ ================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-const menuBtn = document.querySelector(".menu-btn");
-const nav = document.querySelector(".navbar nav");
-
-menuBtn?.addEventListener("click", () => {
-  nav.classList.toggle("open");
-});
+  document.body.classList.add("loading");
 
 
-document.querySelectorAll("nav a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
+  /* =========================
+     LOADING SCREEN
+  ========================== */
+
+  const loader = document.getElementById("loader");
+  const progress = document.getElementById("loadingProgress");
+
+  let currentProgress = 0;
+
+  const loadingInterval = setInterval(() => {
+
+    currentProgress += Math.floor(Math.random() * 5) + 2;
+
+    if (currentProgress >= 100) {
+      currentProgress = 100;
+      clearInterval(loadingInterval);
+
+      progress.style.width = "100%";
+
+      setTimeout(() => {
+        loader.classList.add("finished");
+        document.body.classList.remove("loading");
+      }, 500);
+    } else {
+      progress.style.width = currentProgress + "%";
+    }
+
+  }, 65);
+
+
+  /* =========================
+     MOBILE MENU
+  ========================== */
+
+  const menuBtn = document.querySelector(".menu-btn");
+  const nav = document.querySelector(".navbar nav");
+
+  menuBtn?.addEventListener("click", () => {
+    nav?.classList.toggle("open");
   });
-});
 
 
-/* ================= SCROLL ANİMASYONLARI ================= */
+  document.querySelectorAll(".navbar nav a").forEach(link => {
 
-const observer = new IntersectionObserver(
-  (entries) => {
+    link.addEventListener("click", () => {
+      nav?.classList.remove("open");
+    });
 
-    entries.forEach(entry => {
+  });
 
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
+
+  /* =========================
+     SCROLL REVEAL
+  ========================== */
+
+  const revealElements = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+
+  revealElements.forEach(element => {
+    observer.observe(element);
+  });
+
+
+  /* =========================
+     HERO PARALLAX
+  ========================== */
+
+  const hero = document.querySelector(".hero");
+  const heroArt = document.getElementById("heroArt");
+
+  if (
+    hero &&
+    heroArt &&
+    window.matchMedia("(min-width: 651px)").matches
+  ) {
+
+    hero.addEventListener("mousemove", event => {
+
+      const rect = hero.getBoundingClientRect();
+
+      const x =
+        (event.clientX - rect.left) / rect.width - 0.5;
+
+      const y =
+        (event.clientY - rect.top) / rect.height - 0.5;
+
+      heroArt.style.transform = `
+        translate(${x * 18}px, ${y * 18}px)
+      `;
 
     });
 
-  },
-  {
-    threshold: 0.12
+
+    hero.addEventListener("mouseleave", () => {
+
+      heroArt.style.transform = "translate(0, 0)";
+
+    });
+
   }
-);
 
 
-document.querySelectorAll(".reveal").forEach(element => {
-  observer.observe(element);
-});
+  /* =========================
+     SMOOTH ANCHOR OFFSET
+  ========================== */
 
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-/* ================= NAVBAR AKTİF MENÜ ================= */
+    link.addEventListener("click", event => {
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".navbar nav a");
+      const targetId = link.getAttribute("href");
 
-window.addEventListener("scroll", () => {
+      if (!targetId || targetId === "#") {
+        return;
+      }
 
-  let current = "";
+      const target = document.querySelector(targetId);
 
-  sections.forEach(section => {
+      if (!target) {
+        return;
+      }
 
-    const sectionTop = section.offsetTop - 180;
-    const sectionHeight = section.offsetHeight;
+      event.preventDefault();
 
-    if (
-      window.scrollY >= sectionTop &&
-      window.scrollY < sectionTop + sectionHeight
-    ) {
-      current = section.getAttribute("id");
-    }
+      const offset = 75;
 
-  });
+      const position =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        offset;
 
+      window.scrollTo({
+        top: position,
+        behavior: "smooth"
+      });
 
-  navLinks.forEach(link => {
-
-    link.classList.remove("active");
-
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-
-  });
-
-});
-
-
-/* ================= MOUSE PARALLAX ================= */
-
-const heroArt = document.querySelector(".hero-art");
-
-if (heroArt && window.innerWidth > 900) {
-
-  window.addEventListener("mousemove", (event) => {
-
-    const x = (window.innerWidth / 2 - event.clientX) / 50;
-    const y = (window.innerHeight / 2 - event.clientY) / 50;
-
-    heroArt.style.transform =
-      `translate(${x}px, ${y}px)`;
-
-  });
-
-}
-
-
-/* ================= YILDIRIM EFEKTİ ================= */
-
-const bolt = document.querySelector(".big-bolt");
-
-if (bolt) {
-
-  setInterval(() => {
-
-    if (Math.random() > 0.72) {
-
-      bolt.style.opacity = "0.55";
-
-      setTimeout(() => {
-        bolt.style.opacity = "1";
-      }, 80);
-
-      setTimeout(() => {
-        bolt.style.opacity = "0.7";
-      }, 150);
-
-      setTimeout(() => {
-        bolt.style.opacity = "1";
-      }, 220);
-
-    }
-
-  }, 2500);
-
-}
-
-
-/* ================= SAYFA AÇILIŞI ================= */
-
-window.addEventListener("load", () => {
-
-  document.querySelectorAll(".hero .reveal").forEach((element, index) => {
-
-    setTimeout(() => {
-      element.classList.add("visible");
-    }, 250 + index * 250);
+    });
 
   });
 
