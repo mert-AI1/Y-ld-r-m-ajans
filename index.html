@@ -3,237 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="Yıldırım Ajans - Mert Yıldırım. Premium web tasarım, dijital çözümler, reklam ve logo tasarımı.">
-
-  <title>Yıldırım Ajans | Dijitalde İz Bırak</title>
+  <meta name="description" content="Yıldırım Ajans - Web tasarım, marka kimliği ve dijital tasarım çözümleri.">
+  <title>Yıldırım Ajans | Mert Yıldırım</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- KAR -->
+  <!-- =========================
+       LOADING SCREEN
+  ========================== -->
+  <div class="loader" id="loader">
+
+    <div class="loader-snow"></div>
+
+    <div class="loader-content">
+
+      <div class="loader-bolt">
+        <span>⚡</span>
+      </div>
+
+      <h1>YILDIRIM AJANS</h1>
+
+      <div class="loading-text">
+        <span>LOADING</span><span class="dots">...</span>
+      </div>
+
+      <div class="loading-line">
+        <div class="loading-progress" id="loadingProgress"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =========================
+       SNOW
+  ========================== -->
   <div class="snow" aria-hidden="true"></div>
+  <div class="ambient-light" aria-hidden="true"></div>
 
-  <!-- ÜST IŞIK -->
-  <div class="ambient-light"></div>
 
-  <!-- NAVBAR -->
+  <!-- =========================
+       NAVBAR
+  ========================== -->
   <header class="navbar">
 
     <a href="#anasayfa" class="brand">
       <span class="brand-bolt">⚡</span>
-      <span class="brand-text">
-        <strong>YILDIRIM</strong>
-        <small>AJANS</small>
-      </span>
+      <span>YILDIRIM <b>AJANS</b></span>
     </a>
 
-    <button class="menu-btn" aria-label="Menüyü aç/kapat">
-      <span></span>
-      <span></span>
-    </button>
-
     <nav>
-      <a class="active" href="#anasayfa">Ana Sayfa</a>
+      <a href="#anasayfa">Ana Sayfa</a>
       <a href="#hizmetler">Hizmetler</a>
-      <a href="#calismalar">Çalışmalar</a>
       <a href="#hakkimda">Hakkımda</a>
       <a href="#iletisim">İletişim</a>
     </nav>
 
-    <a class="nav-contact" href="#iletisim">
-      Projeni Başlat
-      <span>↗</span>
-    </a>
+    <button class="menu-btn" aria-label="Menüyü aç">
+      <span></span>
+      <span></span>
+    </button>
 
   </header>
 
 
   <main>
 
-    <!-- ================= HERO ================= -->
-
-    <section id="anasayfa" class="hero">
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section id="anasayfa" class="hero section">
 
       <div class="hero-content reveal">
 
-        <div class="hero-label">
-          <span class="label-line"></span>
-          PREMIUM DIGITAL STUDIO
-        </div>
-
-        <h1>
-          Dijitalde
-          <span>iz bırak.</span>
-        </h1>
-
-        <p class="hero-description">
-          Markanız için sıradanın ötesinde,
-          modern ve etkileyici dijital deneyimler
-          tasarlıyoruz.
-        </p>
-
-        <div class="hero-signature">
-          <span>Mert Yıldırım</span>
-          <small>Founder & Creative Director</small>
-        </div>
-
-        <div class="hero-buttons">
-
-          <a href="#iletisim" class="luxury-btn">
-            <span>Projenizi Konuşalım</span>
-            <b>↗</b>
-          </a>
-
-          <a href="#calismalar" class="outline-btn">
-            Çalışmaları Gör
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- HERO VISUAL -->
-
-      <div class="hero-art reveal">
-
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-
-        <div class="electric-core">
-          <div class="core-ring"></div>
-          <div class="core-ring second"></div>
-
-          <div class="big-bolt">⚡</div>
-
-          <div class="core-text">
-            <span>YILDIRIM</span>
-            <small>AJANS</small>
-          </div>
-        </div>
-
-        <div class="floating-card card-top">
-          <span>01</span>
-          <b>CREATIVE</b>
-          <small>Digital Experience</small>
-        </div>
-
-        <div class="floating-card card-bottom">
-          <span>✦</span>
-          <b>PREMIUM</b>
-          <small>Web Design</small>
-        </div>
-
-      </div>
-
-      <div class="scroll-hint">
-        <span></span>
-        SCROLL
-      </div>
-
-    </section>
-
-
-    <!-- ================= INTRO ================= -->
-
-    <section class="intro section reveal">
-
-      <div class="intro-number">01</div>
-
-      <div>
-        <span class="section-mini">YILDIRIM AJANS</span>
+        <span class="eyebrow">YILDIRIM AJANS</span>
 
         <h2>
-          Güzel görünen değil,
-          <em>hatırlanan</em> markalar.
+          Dijitalde
+          <span>iz bırak.</span>
         </h2>
 
         <p>
-          İlk izlenim önemlidir. Markanızın dijital dünyadaki
-          ilk karşılaşmasını unutulmaz hale getiriyoruz.
+          Markanız için güçlü web deneyimleri,
+          özgün tasarımlar ve akılda kalan
+          dijital kimlikler oluşturuyorum.
         </p>
+
+        <div class="hero-buttons">
+          <a href="#iletisim" class="btn primary">
+            Projenizi Konuşalım <span>↗</span>
+          </a>
+
+          <a href="#hizmetler" class="btn secondary">
+            Hizmetler
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="hero-art" id="heroArt">
+
+        <div class="bolt-glow"></div>
+
+        <div class="core-ring ring-one"></div>
+        <div class="core-ring ring-two"></div>
+        <div class="core-ring ring-three"></div>
+
+        <div class="big-bolt">
+          ⚡
+        </div>
+
+        <div class="orbit orbit-one">✦</div>
+        <div class="orbit orbit-two">·</div>
+        <div class="orbit orbit-three">✦</div>
+
+      </div>
+
+      <div class="hero-scroll">
+        <span></span>
+        AŞAĞI KAYDIR
       </div>
 
     </section>
 
 
-    <!-- ================= HİZMETLER ================= -->
-
+    <!-- =========================
+         SERVICES
+    ========================== -->
     <section id="hizmetler" class="services section">
 
-      <div class="section-title reveal">
+      <div class="section-heading reveal">
+        <span class="eyebrow">HİZMETLER</span>
 
-        <div>
-          <span class="section-mini">02 / SERVICES</span>
-
-          <h2>
-            Ne
-            <em>yapıyoruz?</em>
-          </h2>
-        </div>
-
-        <p>
-          İhtiyacınız olan dijital çözümleri
-          tek bir çatı altında buluşturuyoruz.
-        </p>
-
+        <h2>
+          Fikrinizi
+          <em>güçlendirelim.</em>
+        </h2>
       </div>
 
 
-      <div class="services-grid">
+      <div class="service-grid">
 
         <article class="service-card reveal">
-          <span class="service-number">01</span>
+          <div class="service-number">01</div>
           <div class="service-icon">◈</div>
+
           <h3>Web Tasarım</h3>
+
           <p>
-            Markanızın karakterini yansıtan,
-            hızlı ve mobil uyumlu web siteleri.
+            Modern, hızlı, mobil uyumlu ve markanıza
+            özel web siteleri.
           </p>
+
           <span class="service-arrow">↗</span>
         </article>
 
 
         <article class="service-card reveal">
-          <span class="service-number">02</span>
+          <div class="service-number">02</div>
+          <div class="service-icon">◇</div>
+
+          <h3>Marka & Logo</h3>
+
+          <p>
+            Markanızın karakterini yansıtan
+            özgün logo ve görsel kimlik.
+          </p>
+
+          <span class="service-arrow">↗</span>
+        </article>
+
+
+        <article class="service-card reveal">
+          <div class="service-number">03</div>
           <div class="service-icon">✦</div>
-          <h3>Logo & Marka</h3>
+
+          <h3>Dijital Tasarım</h3>
+
           <p>
-            Markanızı tek bakışta tanınır hale
-            getiren özgün tasarımlar.
+            Sosyal medya, reklam ve dijital
+            platformlar için yaratıcı tasarımlar.
           </p>
-          <span class="service-arrow">↗</span>
-        </article>
 
-
-        <article class="service-card reveal">
-          <span class="service-number">03</span>
-          <div class="service-icon">↗</div>
-          <h3>Dijital Reklam</h3>
-          <p>
-            Markanızın doğru insanlarla buluşmasını
-            sağlayan dijital reklam çözümleri.
-          </p>
-          <span class="service-arrow">↗</span>
-        </article>
-
-
-        <article class="service-card reveal">
-          <span class="service-number">04</span>
-          <div class="service-icon">↻</div>
-          <h3>Site Yenileme</h3>
-          <p>
-            Eski sitenizi modern, hızlı ve
-            etkileyici bir deneyime dönüştürüyoruz.
-          </p>
           <span class="service-arrow">↗</span>
         </article>
 
@@ -242,132 +201,73 @@
     </section>
 
 
-    <!-- ================= ÇALIŞMALAR ================= -->
-
-    <section id="calismalar" class="work section">
-
-      <div class="section-title reveal">
-
-        <div>
-          <span class="section-mini">03 / SELECTED WORK</span>
-
-          <h2>
-            Dijital
-            <em>izler.</em>
-          </h2>
-        </div>
-
-        <p>
-          Her proje farklı bir hikaye.
-          Her tasarım farklı bir karakter.
-        </p>
-
-      </div>
-
-
-      <div class="work-grid">
-
-        <div class="work-card work-large reveal">
-          <div class="work-overlay">
-            <span>WEB DESIGN / 01</span>
-            <h3>Modern<br>Dijital Deneyim</h3>
-            <b>↗</b>
-          </div>
-        </div>
-
-
-        <div class="work-card work-dark reveal">
-          <div class="work-pattern"></div>
-          <div class="work-overlay">
-            <span>BRANDING / 02</span>
-            <h3>Güçlü<br>Kimlik</h3>
-            <b>↗</b>
-          </div>
-        </div>
-
-
-        <div class="work-card work-gold reveal">
-          <div class="work-lightning">⚡</div>
-          <div class="work-overlay">
-            <span>IDENTITY / 03</span>
-            <h3>Yıldırım<br>Dokunuşu</h3>
-            <b>↗</b>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= HAKKIMDA ================= -->
-
+    <!-- =========================
+         ABOUT
+    ========================== -->
     <section id="hakkimda" class="about section">
 
       <div class="about-visual reveal">
-        <div class="about-bolt">⚡</div>
-        <span>MY</span>
+
+        <div class="about-bolt">
+          ⚡
+        </div>
+
+        <div class="about-circle"></div>
+
       </div>
+
 
       <div class="about-content reveal">
 
-        <span class="section-mini">04 / ABOUT</span>
+        <span class="eyebrow">HAKKIMDA</span>
 
         <h2>
-          Merhaba,<br>
-          ben <em>Mert.</em>
+          Merhaba, ben
+          <em>Mert Yıldırım.</em>
         </h2>
 
-        <p>
-          Yıldırım Ajans'ın arkasındaki yaratıcı fikir ve
-          tasarım anlayışının sahibiyim.
+        <p class="about-lead">
+          Yıldırım Ajans’ın kurucusu ve arkasındaki
+          fikirlerin mimarıyım.
         </p>
 
         <p>
-          Amacım sadece bir web sitesi yapmak değil;
-          insanların markanızı gördüğünde hissettiği
-          ilk duyguyu tasarlamak.
+          Benim için tasarım, sadece güzel görünen bir şey değil;
+          bir markanın karakterini, hikâyesini ve insanlarda
+          bırakacağı etkiyi ortaya çıkarmanın bir yolu.
         </p>
 
-        <div class="signature">
-          Mert Yıldırım
-        </div>
+        <p>
+          Her projenin arkasında farklı bir fikir, her fikrin
+          arkasında ise onu gerçeğe dönüştürecek doğru bir
+          dokunuş olduğuna inanıyorum.
+        </p>
+
+        <p>
+          Web tasarımından marka kimliğine, logodan dijital
+          projelere kadar amacım aynı:
+          <strong>Sıradan olanı değil, akılda kalanı üretmek.</strong>
+        </p>
+
+        <p>
+          Yıldırım Ajans da tam olarak bu düşüncenin sonucu.
+          <strong>Fikri tasarıma, tasarımı ise iz bırakan
+          bir deneyime dönüştürüyorum.</strong>
+        </p>
 
       </div>
 
     </section>
 
 
-    <!-- ================= CTA ================= -->
-
+    <!-- =========================
+         CTA
+    ========================== -->
     <section class="cta section reveal">
 
-      <span class="section-mini">05 / LET'S CREATE</span>
+      <div class="cta-inner">
 
-      <h2>
-        Sıra sizin
-        <em>markanızda.</em>
-      </h2>
-
-      <p>
-        Fikrinizi anlatın. Gerisini birlikte tasarlayalım.
-      </p>
-
-      <a href="#iletisim" class="luxury-btn big">
-        <span>Birlikte Başlayalım</span>
-        <b>↗</b>
-      </a>
-
-    </section>
-
-
-    <!-- ================= İLETİŞİM ================= -->
-
-    <section id="iletisim" class="contact section">
-
-      <div class="contact-heading reveal">
-
-        <span class="section-mini">06 / CONTACT</span>
+        <span class="eyebrow">YENİ BİR PROJE</span>
 
         <h2>
           Bir fikriniz mi
@@ -375,7 +275,35 @@
         </h2>
 
         <p>
-          Bize ulaşın. Projenizi birlikte konuşalım.
+          Fikrinizi anlatın, birlikte nasıl
+          daha iyi bir şeye dönüşebileceğine bakalım.
+        </p>
+
+        <a href="#iletisim" class="btn primary">
+          İletişime Geç <span>↗</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section id="iletisim" class="contact section">
+
+      <div class="contact-heading reveal">
+
+        <span class="eyebrow">İLETİŞİM</span>
+
+        <h2>
+          Konuşalım,
+          <em>üretelim.</em>
+        </h2>
+
+        <p>
+          Projeniz için bize ulaşmanın en kolay yolu:
         </p>
 
       </div>
@@ -384,6 +312,7 @@
       <div class="contact-options reveal">
 
         <a class="contact-option" href="tel:+905306329516">
+
           <span class="contact-icon">☎</span>
 
           <div>
@@ -392,10 +321,17 @@
           </div>
 
           <b>↗</b>
+
         </a>
 
 
-        <a class="contact-option" href="https://wa.me/905078162702" target="_blank" rel="noopener">
+        <a
+          class="contact-option"
+          href="https://wa.me/905078162702"
+          target="_blank"
+          rel="noopener"
+        >
+
           <span class="contact-icon">◉</span>
 
           <div>
@@ -404,10 +340,17 @@
           </div>
 
           <b>↗</b>
+
         </a>
 
 
-        <a class="contact-option" href="https://mail.google.com/mail/?view=cm&fs=1&to=yildirimajans2@gmail.com" target="_blank" rel="noopener">
+        <a
+          class="contact-option"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=yildirimajans2@gmail.com"
+          target="_blank"
+          rel="noopener"
+        >
+
           <span class="contact-icon">✉</span>
 
           <div>
@@ -416,6 +359,7 @@
           </div>
 
           <b>↗</b>
+
         </a>
 
       </div>
@@ -425,36 +369,21 @@
   </main>
 
 
-  <!-- ================= FOOTER ================= -->
-
+  <!-- =========================
+       FOOTER
+  ========================== -->
   <footer>
 
-    <div class="footer-main">
-
-      <a href="#anasayfa" class="brand">
-        <span class="brand-bolt">⚡</span>
-
-        <span class="brand-text">
-          <strong>YILDIRIM</strong>
-          <small>AJANS</small>
-        </span>
-      </a>
-
-      <p>
-        Dijitalde iz bırak.
-      </p>
-
-      <a href="#anasayfa" class="back-top">
-        ↑
-      </a>
-
+    <div class="footer-brand">
+      <span>⚡</span>
+      YILDIRIM AJANS
     </div>
 
-    <div class="footer-bottom">
-      <span>© 2022 Yıldırım Ajans</span>
-      <span>MERT YILDIRIM</span>
-      <span>DAİMA DAHA İLERİYE ⚡</span>
-    </div>
+    <p>
+      © 2026 Yıldırım Ajans. Tüm hakları saklıdır.
+    </p>
+
+    <a href="#anasayfa">Yukarı ↑</a>
 
   </footer>
 
